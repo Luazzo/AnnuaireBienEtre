@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Annuaire\BienEtreBundle\Entity\UserRepository")
  */
-class User
-{
+class User {
+
     /**
      * @var integer
      *
@@ -35,8 +35,6 @@ class User
      */
     private $prenom;
 
-
-
     /**
      * @var string
      *
@@ -50,8 +48,6 @@ class User
      * @ORM\Column(name="numTel", type="string", length=255)
      */
     private $numTel;
-
-
 
     /**
      * @var string
@@ -95,16 +91,27 @@ class User
      */
     private $inscripConfig;
 
- 
+    /**
+     * @ORM\ManyToOne(targetEntity="Annuaire\BienEtreBundle\Entity\Localite")
+     */
+    private $localite;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Annuaire\BienEtreBundle\Entity\CodePostal")
+     */
+    private $codePostal;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Annuaire\BienEtreBundle\Entity\Commune")
+     */
+    private $commune;
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -114,8 +121,7 @@ class User
      * @param string $nom
      * @return User
      */
-    public function setNom($nom)
-    {
+    public function setNom($nom) {
         $this->nom = $nom;
 
         return $this;
@@ -126,8 +132,7 @@ class User
      *
      * @return string 
      */
-    public function getNom()
-    {
+    public function getNom() {
         return $this->nom;
     }
 
@@ -137,8 +142,7 @@ class User
      * @param string $prenom
      * @return User
      */
-    public function setPrenom($prenom)
-    {
+    public function setPrenom($prenom) {
         $this->prenom = $prenom;
 
         return $this;
@@ -149,12 +153,9 @@ class User
      *
      * @return string 
      */
-    public function getPrenom()
-    {
+    public function getPrenom() {
         return $this->prenom;
     }
-
-
 
     /**
      * Set email
@@ -162,8 +163,7 @@ class User
      * @param string $email
      * @return User
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
 
         return $this;
@@ -174,8 +174,7 @@ class User
      *
      * @return string 
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
@@ -185,8 +184,7 @@ class User
      * @param string $numTel
      * @return User
      */
-    public function setNumTel($numTel)
-    {
+    public function setNumTel($numTel) {
         $this->numTel = $numTel;
 
         return $this;
@@ -197,12 +195,9 @@ class User
      *
      * @return string 
      */
-    public function getNumTel()
-    {
+    public function getNumTel() {
         return $this->numTel;
     }
-
-
 
     /**
      * Set password
@@ -210,8 +205,7 @@ class User
      * @param string $password
      * @return User
      */
-    public function setPassword($password)
-    {
+    public function setPassword($password) {
         $this->password = $password;
 
         return $this;
@@ -222,8 +216,7 @@ class User
      *
      * @return string 
      */
-    public function getPassword()
-    {
+    public function getPassword() {
         return $this->password;
     }
 
@@ -233,8 +226,7 @@ class User
      * @param string $adresseN
      * @return User
      */
-    public function setAdresseN($adresseN)
-    {
+    public function setAdresseN($adresseN) {
         $this->adresseN = $adresseN;
 
         return $this;
@@ -245,8 +237,7 @@ class User
      *
      * @return string 
      */
-    public function getAdresseN()
-    {
+    public function getAdresseN() {
         return $this->adresseN;
     }
 
@@ -256,8 +247,7 @@ class User
      * @param string $adresseRue
      * @return User
      */
-    public function setAdresseRue($adresseRue)
-    {
+    public function setAdresseRue($adresseRue) {
         $this->adresseRue = $adresseRue;
 
         return $this;
@@ -268,8 +258,7 @@ class User
      *
      * @return string 
      */
-    public function getAdresseRue()
-    {
+    public function getAdresseRue() {
         return $this->adresseRue;
     }
 
@@ -279,8 +268,7 @@ class User
      * @param integer $numEssaiInfect
      * @return User
      */
-    public function setNumEssaiInfect($numEssaiInfect)
-    {
+    public function setNumEssaiInfect($numEssaiInfect) {
         $this->numEssaiInfect = $numEssaiInfect;
 
         return $this;
@@ -291,8 +279,7 @@ class User
      *
      * @return integer 
      */
-    public function getNumEssaiInfect()
-    {
+    public function getNumEssaiInfect() {
         return $this->numEssaiInfect;
     }
 
@@ -302,8 +289,7 @@ class User
      * @param boolean $banni
      * @return User
      */
-    public function setBanni($banni)
-    {
+    public function setBanni($banni) {
         $this->banni = $banni;
 
         return $this;
@@ -314,8 +300,7 @@ class User
      *
      * @return boolean 
      */
-    public function getBanni()
-    {
+    public function getBanni() {
         return $this->banni;
     }
 
@@ -325,8 +310,7 @@ class User
      * @param boolean $inscripConfig
      * @return User
      */
-    public function setInscripConfig($inscripConfig)
-    {
+    public function setInscripConfig($inscripConfig) {
         $this->inscripConfig = $inscripConfig;
 
         return $this;
@@ -337,8 +321,7 @@ class User
      *
      * @return boolean 
      */
-    public function getInscripConfig()
-    {
+    public function getInscripConfig() {
         return $this->inscripConfig;
     }
 
@@ -348,5 +331,4 @@ class User
      * @param boolean $newsLetter
      * @return User
      */
- 
 }
