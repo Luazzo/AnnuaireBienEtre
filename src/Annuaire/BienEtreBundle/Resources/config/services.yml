@@ -1,0 +1,4 @@
+services:
+#    annuaire_bien_etre.example:
+#        class: Annuaire\BienEtreBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

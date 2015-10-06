@@ -1,3 +1,5 @@
-app:
-    resource: @AppBundle/Controller/
-    type:     annotation
+annuaire_bien_etre:
+    resource: "@AnnuaireBienEtreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+

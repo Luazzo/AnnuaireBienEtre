@@ -1,0 +1,3 @@
+annuaire_bien_etre_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: AnnuaireBienEtreBundle:Default:index }
