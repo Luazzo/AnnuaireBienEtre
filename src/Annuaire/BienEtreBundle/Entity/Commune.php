@@ -7,11 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Commune
  *
- * @ORM\Table()
+ * @ORM\Table("comunne")
  * @ORM\Entity(repositoryClass="Annuaire\BienEtreBundle\Entity\CommuneRepository")
  */
-class Commune
-{
+class Commune {
+
     /**
      * @var integer
      *
@@ -28,14 +28,7 @@ class Commune
      */
     private $commune;
 
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -45,8 +38,7 @@ class Commune
      * @param string $commune
      * @return Commune
      */
-    public function setCommune($commune)
-    {
+    public function setCommune($commune) {
         $this->commune = $commune;
 
         return $this;
@@ -57,8 +49,8 @@ class Commune
      *
      * @return string 
      */
-    public function getCommune()
-    {
+    public function getCommune() {
         return $this->commune;
     }
+
 }

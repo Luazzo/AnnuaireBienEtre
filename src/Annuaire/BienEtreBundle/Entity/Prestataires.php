@@ -3,39 +3,19 @@
 namespace Annuaire\BienEtreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Annuaire\BienEtreBundle\Entity\User;
 
 /**
- * Prestataires
- *
- * @ORM\Table()
  * @ORM\Entity(repositoryClass="Annuaire\BienEtreBundle\Entity\PrestatairesRepository")
  */
-class Prestataires {
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+class Prestataires extends User {
 
     /**
      * @var string
      *
      * @ORM\Column(name="numTva", type="string", length=255)
      */
-    private $numTva;
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId() {
-        return $this->id;
-    }
+    protected $numTva;
 
     /**
      * Set site

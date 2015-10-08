@@ -3,15 +3,16 @@
 namespace Annuaire\BienEtreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Annuaire\BienEtreBundle\Entity\User;
 
 /**
  * Favorit
  *
- * @ORM\Table()
+ * @ORM\Table("favourit")
  * @ORM\Entity(repositoryClass="Annuaire\BienEtreBundle\Entity\FavoritRepository")
  */
-class Favorit
-{
+class Favorit {
+
     /**
      * @var integer
      *
@@ -28,14 +29,24 @@ class Favorit
      */
     private $date;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Annuaire\BienEtreBundle\Entity\User")
+     *  @ORM\JoinColumn(name="prestataireId", referencedColumnName="id")
+     */
+    private $prestataireId;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Annuaire\BienEtreBundle\Entity\User")
+     *  @ORM\JoinColumn(name="internautId", referencedColumnName="id")
+     */
+    private $intarnautId;
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -45,8 +56,7 @@ class Favorit
      * @param \DateTime $date
      * @return Favorit
      */
-    public function setDate($date)
-    {
+    public function setDate($date) {
         $this->date = $date;
 
         return $this;
@@ -57,8 +67,8 @@ class Favorit
      *
      * @return \DateTime 
      */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
+
 }

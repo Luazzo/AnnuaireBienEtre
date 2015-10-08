@@ -3,39 +3,19 @@
 namespace Annuaire\BienEtreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Annuaire\BienEtreBundle\Entity\User;
 
 /**
- * Intarnauts
- *
- * @ORM\Table()
  * @ORM\Entity(repositoryClass="Annuaire\BienEtreBundle\Entity\IntarnautsRepository")
  */
-class Intarnauts {
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+class Intarnauts extends User {
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="newsLetter", type="boolean")
      */
-    private $newsLetter;
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId() {
-        return $this->id;
-    }
+    protected $newsLetter;
 
     public function setNewsLetter($newsLetter) {
         $this->newsLetter = $newsLetter;

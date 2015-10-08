@@ -3,15 +3,16 @@
 namespace Annuaire\BienEtreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Annuaire\BienEtreBundle\Entity\Images;
 
 /**
  * CategoriesDesServices
  *
- * @ORM\Table()
+ * @ORM\Table("categories_services")
  * @ORM\Entity(repositoryClass="Annuaire\BienEtreBundle\Entity\CategoriesDesServicesRepository")
  */
-class CategoriesDesServices
-{
+class CategoriesDesServices {
+
     /**
      * @var integer
      *
@@ -49,14 +50,18 @@ class CategoriesDesServices
      */
     private $valide;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Annuaire\BienEtreBundle\Entity\Images")
+     *  @ORM\JoinColumn(name="image", referencedColumnName="id")
+     */
+    private $image;
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -66,8 +71,7 @@ class CategoriesDesServices
      * @param string $nom
      * @return CategoriesDesServices
      */
-    public function setNom($nom)
-    {
+    public function setNom($nom) {
         $this->nom = $nom;
 
         return $this;
@@ -78,8 +82,7 @@ class CategoriesDesServices
      *
      * @return string 
      */
-    public function getNom()
-    {
+    public function getNom() {
         return $this->nom;
     }
 
@@ -89,8 +92,7 @@ class CategoriesDesServices
      * @param string $description
      * @return CategoriesDesServices
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
 
         return $this;
@@ -101,8 +103,7 @@ class CategoriesDesServices
      *
      * @return string 
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -112,8 +113,7 @@ class CategoriesDesServices
      * @param boolean $enAvant
      * @return CategoriesDesServices
      */
-    public function setEnAvant($enAvant)
-    {
+    public function setEnAvant($enAvant) {
         $this->enAvant = $enAvant;
 
         return $this;
@@ -124,8 +124,7 @@ class CategoriesDesServices
      *
      * @return boolean 
      */
-    public function getEnAvant()
-    {
+    public function getEnAvant() {
         return $this->enAvant;
     }
 
@@ -135,8 +134,7 @@ class CategoriesDesServices
      * @param boolean $valide
      * @return CategoriesDesServices
      */
-    public function setValide($valide)
-    {
+    public function setValide($valide) {
         $this->valide = $valide;
 
         return $this;
@@ -147,8 +145,8 @@ class CategoriesDesServices
      *
      * @return boolean 
      */
-    public function getValide()
-    {
+    public function getValide() {
         return $this->valide;
     }
+
 }

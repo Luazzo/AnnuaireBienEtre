@@ -3,15 +3,16 @@
 namespace Annuaire\BienEtreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Annuaire\BienEtreBundle\Entity\User;
 
 /**
  * Commentaire
  *
- * @ORM\Table()
+ * @ORM\Table("commentaires")
  * @ORM\Entity(repositoryClass="Annuaire\BienEtreBundle\Entity\CommentaireRepository")
  */
-class Commentaire
-{
+class Commentaire {
+
     /**
      * @var integer
      *
@@ -49,14 +50,24 @@ class Commentaire
      */
     private $endcodage;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Annuaire\BienEtreBundle\Entity\User")
+     *  @ORM\JoinColumn(name="prestataireId", referencedColumnName="id")
+     */
+    private $prestataireId;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Annuaire\BienEtreBundle\Entity\User")
+     *  @ORM\JoinColumn(name="internautId", referencedColumnName="id")
+     */
+    private $intarnautId;
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -66,8 +77,7 @@ class Commentaire
      * @param integer $cote
      * @return Commentaire
      */
-    public function setCote($cote)
-    {
+    public function setCote($cote) {
         $this->cote = $cote;
 
         return $this;
@@ -78,8 +88,7 @@ class Commentaire
      *
      * @return integer 
      */
-    public function getCote()
-    {
+    public function getCote() {
         return $this->cote;
     }
 
@@ -89,8 +98,7 @@ class Commentaire
      * @param string $titre
      * @return Commentaire
      */
-    public function setTitre($titre)
-    {
+    public function setTitre($titre) {
         $this->titre = $titre;
 
         return $this;
@@ -101,8 +109,7 @@ class Commentaire
      *
      * @return string 
      */
-    public function getTitre()
-    {
+    public function getTitre() {
         return $this->titre;
     }
 
@@ -112,8 +119,7 @@ class Commentaire
      * @param string $contenue
      * @return Commentaire
      */
-    public function setContenue($contenue)
-    {
+    public function setContenue($contenue) {
         $this->contenue = $contenue;
 
         return $this;
@@ -124,8 +130,7 @@ class Commentaire
      *
      * @return string 
      */
-    public function getContenue()
-    {
+    public function getContenue() {
         return $this->contenue;
     }
 
@@ -135,8 +140,7 @@ class Commentaire
      * @param \DateTime $endcodage
      * @return Commentaire
      */
-    public function setEndcodage($endcodage)
-    {
+    public function setEndcodage($endcodage) {
         $this->endcodage = $endcodage;
 
         return $this;
@@ -147,8 +151,8 @@ class Commentaire
      *
      * @return \DateTime 
      */
-    public function getEndcodage()
-    {
+    public function getEndcodage() {
         return $this->endcodage;
     }
+
 }

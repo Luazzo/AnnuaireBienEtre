@@ -3,11 +3,11 @@
 namespace Annuaire\BienEtreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Annuaire\BienEtreBundle\Entity\User;
 /**
  * Stage
  *
- * @ORM\Table()
+ * @ORM\Table("stage")
  * @ORM\Entity(repositoryClass="Annuaire\BienEtreBundle\Entity\StageRepository")
  */
 class Stage
@@ -77,6 +77,11 @@ class Stage
      */
     private $affichageJusque;
 
+   /**
+     * @ORM\ManyToOne(targetEntity="Annuaire\BienEtreBundle\Entity\User")
+    * @ORM\JoinColumn(name="user", referencedColumnName="id")
+     */
+   private $user;
 
     /**
      * Get id

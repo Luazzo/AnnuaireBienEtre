@@ -3,11 +3,13 @@
 namespace Annuaire\BienEtreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Annuaire\BienEtreBundle\Entity\User;
+
 
 /**
  * Promotion
  *
- * @ORM\Table()
+ * @ORM\Table("promotion")
  * @ORM\Entity(repositoryClass="Annuaire\BienEtreBundle\Entity\PromotionRepository")
  */
 class Promotion
@@ -69,7 +71,11 @@ class Promotion
      * @ORM\Column(name="affichageJusque", type="date")
      */
     private $affichageJusque;
-
+   /**
+     * @ORM\ManyToOne(targetEntity="Annuaire\BienEtreBundle\Entity\User")
+    * @ORM\JoinColumn(name="user", referencedColumnName="id")
+     */
+   private $user;
 
     /**
      * Get id

@@ -3,11 +3,12 @@
 namespace Annuaire\BienEtreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Annuaire\BienEtreBundle\Entity\User;
 
 /**
  * Images
  *
- * @ORM\Table()
+ * @ORM\Table("image")
  * @ORM\Entity(repositoryClass="Annuaire\BienEtreBundle\Entity\ImagesRepository")
  */
 class Images
@@ -31,9 +32,9 @@ class Images
     /**
      * @var string
      *
-     * @ORM\Column(name="typr", type="string", length=255)
+     * @ORM\Column(name="type", type="string", length=255)
      */
-    private $typr;
+    private $type;
 
     /**
      * @var string
@@ -62,7 +63,11 @@ class Images
      * @ORM\Column(name="publication", type="boolean")
      */
     private $publication;
-
+    /**
+     * @ORM\ManyToOne(targetEntity="Annuaire\BienEtreBundle\Entity\User")
+     * @ORM\JoinColumn(name="user", referencedColumnName="id", nullable=true)
+     */
+    private $user;
 
     /**
      * Get id

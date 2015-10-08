@@ -3,11 +3,11 @@
 namespace Annuaire\BienEtreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Annuaire\BienEtreBundle\Entity\User;
 /**
  * Notes
  *
- * @ORM\Table()
+ * @ORM\Table("notes")
  * @ORM\Entity(repositoryClass="Annuaire\BienEtreBundle\Entity\NotesRepository")
  */
 class Notes
@@ -42,6 +42,14 @@ class Notes
      */
     private $date;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Annuaire\BienEtreBundle\Entity\User")
+     */
+    private $prestataireId;
+      /**
+     * @ORM\ManyToOne(targetEntity="Annuaire\BienEtreBundle\Entity\User")
+     */
+    private $intarnautId;
 
     /**
      * Get id

@@ -3,12 +3,20 @@
 namespace Annuaire\BienEtreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Annuaire\BienEtreBundle\Entity\Localite;
+use Annuaire\BienEtreBundle\Entity\CodePostal;
+use Annuaire\BienEtreBundle\Entity\Commune;
+use Annuaire\BienEtreBundle\Entity\Commentaire;
+use Annuaire\BienEtreBundle\Entity\CategoriesDesServices;
 
 /**
  * User
  *
- * @ORM\Table()
+ * @ORM\Table("user")
  * @ORM\Entity(repositoryClass="Annuaire\BienEtreBundle\Entity\UserRepository")
+ * @InheritanceType("SINGLE_TABLE")
+ * @DiscriminatorColumn(name="userType", type="string")
+ * @DiscriminatorMap({"prestataire" = "Prestataires", "internaut" = "Internauts"})
  */
 class User {
 
@@ -19,92 +27,107 @@ class User {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
      */
-    private $nom;
+    protected $nom;
+
+    /**
+     * @var string
+     *   
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    protected $userType;
 
     /**
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=255)
      */
-    private $prenom;
+    protected $prenom;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
      */
-    private $email;
+    protected $email;
 
     /**
      * @var string
      *
      * @ORM\Column(name="numTel", type="string", length=255)
      */
-    private $numTel;
+    protected $numTel;
 
     /**
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
      */
-    private $password;
+    protected $password;
 
     /**
      * @var string
      *
      * @ORM\Column(name="adresseN", type="string", length=255)
      */
-    private $adresseN;
+    protected $adresseN;
 
     /**
      * @var string
      *
      * @ORM\Column(name="adresseRue", type="string", length=255)
      */
-    private $adresseRue;
+    protected $adresseRue;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="numEssaiInfect", type="integer")
      */
-    private $numEssaiInfect;
+    protected $numEssaiInfect;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="banni", type="boolean")
      */
-    private $banni;
+    protected $banni;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="inscripConfig", type="boolean")
      */
-    private $inscripConfig;
+    protected $inscripConfig;
 
     /**
      * @ORM\ManyToOne(targetEntity="Annuaire\BienEtreBundle\Entity\Localite")
+     * @ORM\JoinColumn(name="localite", referencedColumnName="id")
      */
-    private $localite;
+    protected $localite;
 
     /**
      * @ORM\ManyToOne(targetEntity="Annuaire\BienEtreBundle\Entity\CodePostal")
+     * @ORM\JoinColumn(name="codePostal", referencedColumnName="id")
      */
-    private $codePostal;
+    protected $codePostal;
 
     /**
      * @ORM\ManyToOne(targetEntity="Annuaire\BienEtreBundle\Entity\Commune")
+     * @ORM\JoinColumn(name="commune", referencedColumnName="id")
      */
-    private $commune;
+    protected $commune;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Annuaire\BienEtreBundle\Entity\CategoriesDesServices")
+     */
+    protected $categorie;
 
     /**
      * Get id

@@ -4,14 +4,15 @@ namespace Annuaire\BienEtreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * CodePostal
  *
- * @ORM\Table()
+ * @ORM\Table("code_postal")
  * @ORM\Entity(repositoryClass="Annuaire\BienEtreBundle\Entity\CodePostalRepository")
  */
-class CodePostal
-{
+class CodePostal {
+
     /**
      * @var integer
      *
@@ -29,13 +30,13 @@ class CodePostal
     private $codePostal;
 
 
+
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -45,8 +46,7 @@ class CodePostal
      * @param string $codePostal
      * @return CodePostal
      */
-    public function setCodePostal($codePostal)
-    {
+    public function setCodePostal($codePostal) {
         $this->codePostal = $codePostal;
 
         return $this;
@@ -57,8 +57,8 @@ class CodePostal
      *
      * @return string 
      */
-    public function getCodePostal()
-    {
+    public function getCodePostal() {
         return $this->codePostal;
     }
+
 }

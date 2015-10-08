@@ -3,15 +3,17 @@
 namespace Annuaire\BienEtreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Annuaire\BienEtreBundle\Entity\Commentaire;
+use Annuaire\BienEtreBundle\Entity\User;
 
 /**
  * Abus
  *
- * @ORM\Table()
+ * @ORM\Table("abus")
  * @ORM\Entity(repositoryClass="Annuaire\BienEtreBundle\Entity\AbusRepository")
  */
-class Abus
-{
+class Abus {
+
     /**
      * @var integer
      *
@@ -35,14 +37,24 @@ class Abus
      */
     private $encodage;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Annuaire\BienEtreBundle\Entity\User")
+     * @ORM\JoinColumn(name="user", referencedColumnName="id")
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Annuaire\BienEtreBundle\Entity\Commentaire")
+     *  @ORM\JoinColumn(name="user", referencedColumnName="id")
+     */
+    private $commentaire;
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -52,8 +64,7 @@ class Abus
      * @param string $description
      * @return Abus
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
 
         return $this;
@@ -64,8 +75,7 @@ class Abus
      *
      * @return string 
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -75,8 +85,7 @@ class Abus
      * @param \DateTime $encodage
      * @return Abus
      */
-    public function setEncodage($encodage)
-    {
+    public function setEncodage($encodage) {
         $this->encodage = $encodage;
 
         return $this;
@@ -87,8 +96,8 @@ class Abus
      *
      * @return \DateTime 
      */
-    public function getEncodage()
-    {
+    public function getEncodage() {
         return $this->encodage;
     }
+
 }

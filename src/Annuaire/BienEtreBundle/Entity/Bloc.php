@@ -3,6 +3,8 @@
 namespace Annuaire\BienEtreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Annuaire\BienEtreBundle\Entity\User;
+
 
 /**
  * Bloc
@@ -34,7 +36,18 @@ class Bloc
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
+        /**
+     * @var integer
+     *
+     * @ORM\Column(name="ordre", type="string", length=255)
+     */
+    private $ordere;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Annuaire\BienEtreBundle\Entity\User")
+     * @ORM\JoinColumn(name="user", referencedColumnName="id")
+     */
+    protected $user;
 
     /**
      * Get id

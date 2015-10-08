@@ -7,11 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Localite
  *
- * @ORM\Table()
+ * @ORM\Table("localite")
  * @ORM\Entity(repositoryClass="Annuaire\BienEtreBundle\Entity\LocaliteRepository")
  */
-class Localite
-{
+class Localite {
+
     /**
      * @var integer
      *
@@ -29,13 +29,13 @@ class Localite
     private $localite;
 
 
+
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -45,8 +45,7 @@ class Localite
      * @param string $localite
      * @return Localite
      */
-    public function setLocalite($localite)
-    {
+    public function setLocalite($localite) {
         $this->localite = $localite;
 
         return $this;
@@ -57,8 +56,8 @@ class Localite
      *
      * @return string 
      */
-    public function getLocalite()
-    {
+    public function getLocalite() {
         return $this->localite;
     }
+
 }
